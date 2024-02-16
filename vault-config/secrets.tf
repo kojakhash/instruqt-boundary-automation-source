@@ -1,23 +1,23 @@
 # Enable Boundary related kv engine
-resource "vault_mount" "kv-boundary" {
-  path          = "boundary"
-  type          = "kv-v2"
-  options     = { version = "2" }
-  description = "Boundary related kv v2"
-}
+# resource "vault_mount" "kv-boundary" {
+#   path          = "boundary"
+#   type          = "kv-v2"
+#   options     = { version = "2" }
+#   description = "Boundary related kv v2"
+# }
 
-resource "vault_kv_secret_v2" "boundary-secret" {
-  mount                      = vault_mount.kv-boundary.path
-  name                       = "ec2London"
-  cas                        = 1
-  delete_all_versions        = true
-  data_json                  = jsonencode(
-  {
-    username = "ubuntu",
-    private_key = "${var.private_key}"
-  }
-  )
-}
+# resource "vault_kv_secret_v2" "boundary-secret" {
+#   mount                      = vault_mount.kv-boundary.path
+#   name                       = "ec2London"
+#   cas                        = 1
+#   delete_all_versions        = true
+#   data_json                  = jsonencode(
+#   {
+#     username = "ubuntu",
+#     private_key = "${var.private_key}"
+#   }
+#   )
+# }
 
 # resource "vault_mount" "ssh-client-signer" {
 #     path = "ssh-client-signer"
