@@ -21,15 +21,15 @@ resource "vault_generic_endpoint" "admin" {
 EOT
 }
 
-resource "vault_token" "boundary-token" {
-  no_parent = true
-  no_default_policy = true
-  policies = ["boundary-policy", "boundary-read", "admins"]
+# resource "vault_token" "boundary-token" {
+#   no_parent = true
+#   no_default_policy = true
+#   policies = ["boundary-policy", "boundary-read", "admins"]
 
-  renewable = true
-  period = "120m"
+#   renewable = true
+#   period = "120m"
 
-  metadata = {
-    "purpose" = "Boundary-cred-store"
-  }
-}
+#   metadata = {
+#     "purpose" = "Boundary-cred-store"
+#   }
+# }
