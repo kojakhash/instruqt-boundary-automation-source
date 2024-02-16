@@ -29,16 +29,16 @@ data "terraform_remote_state" "hcp_vault_manage" {
   }
 }
 
-data "terraform_remote_state" "aws_resources" {
-  backend = "remote"
+# data "terraform_remote_state" "aws_resources" {
+#   backend = "remote"
 
-  config = {
-    organization = var.tfc_org
-    workspaces = {
-      name = "aws-resources"
-    }
-  }
-}
+#   config = {
+#     organization = var.tfc_org
+#     workspaces = {
+#       name = "aws-resources"
+#     }
+#   }
+# }
 
 provider "hcp" {}
 
