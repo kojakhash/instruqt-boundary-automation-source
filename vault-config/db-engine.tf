@@ -1,3 +1,8 @@
+# resource "vault_mount" "aws-rds-db-engine" {
+#     path = "aws-rds"
+#     type = "database"
+# }
+
 # resource "vault_database_secret_backend_connection" "postgres" {
 #   backend       = vault_mount.aws-rds-db-engine.path
 #   name          = "aws-postgres"

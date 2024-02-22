@@ -48,17 +48,17 @@ resource "aws_security_group_rule" "allow_egress_controller" {
 }
 
 # Example resource for connecting to through boundary over SSH
-resource "aws_instance" "target" {
-  count                         = var.num_targets
-  ami                           = data.aws_ami.ubuntu.id
-  instance_type                 = "t3.micro"
-  subnet_id                     = aws_subnet.public.*.id[count.index]
-  key_name                      = aws_key_pair.boundary.key_name
-  vpc_security_group_ids        = [aws_security_group.worker.id]
-  associate_public_ip_address   = true
-  tags = {
-    Name = "${var.tag}-target-${random_pet.test.id}-${count.index}"
-  }
+# resource "aws_instance" "target" {
+#   count                         = var.num_targets
+#   ami                           = data.aws_ami.ubuntu.id
+#   instance_type                 = "t3.micro"
+#   subnet_id                     = aws_subnet.public.*.id[count.index]
+#   key_name                      = aws_key_pair.boundary.key_name
+#   vpc_security_group_ids        = [aws_security_group.worker.id]
+#   associate_public_ip_address   = true
+#   tags = {
+#     Name = "${var.tag}-target-${random_pet.test.id}-${count.index}"
+#   }
 #   user_data = <<EOF
 # #!/bin/bash
 # sudo bash -c "echo ${data.terraform_remote_state.hcp_vault_manage.outputs.vault_boundary_ssh_ca} > /etc/ssh/ca-key.pub" \
@@ -67,7 +67,7 @@ resource "aws_instance" "target" {
 # sudo bash -c "echo TrustedUserCAKeys /etc/ssh/ca-key.pub >> /etc/ssh/sshd_config"
 # sudo systemctl restart sshd.service
 #   EOF
-}
+# }
 
 # resource "aws_instance" "worker" {
 #   ami                           = data.aws_ami.ubuntu.id
